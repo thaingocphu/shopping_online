@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  php-apache-environment:
+    container_name: php
+    image: php:8.0-apache
+    volumes:
+      - C:/Users/ASUS/OneDrive/Desktop/perfex_crm:/var/www/html/
+    ports:
+      - 8888:80
+    depends_on:
+      - codeigniter_demo
+  codeigniter_demo:
+    container_name: codeigniter_demo
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '1'
+      MYSQL_DATABASE: codeigniter1
+      MYSQL_USER: codeigniter1
+      MYSQL_PASSWORD: '123456'
+    ports:
+      - "3306:3306"
